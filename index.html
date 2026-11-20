@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobTrack — Personal Job Application Tracker</title>
+<style>
+:root{--bg:#fff8fc;--panel:#fff;--text:#352d43;--muted:#887f98;--line:#f0e5ef;--blue:#9876d8;--blue-soft:#f3edff;--green:#399b78;--shadow:0 9px 28px rgba(130,91,145,.09)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 90% 0%,#fff0f7 0,transparent 28%),var(--bg);color:var(--text);font-family:Inter,"Noto Sans Thai",Tahoma,Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.sidebar{width:238px;background:linear-gradient(180deg,#fff 0%,#fff9fd 100%);border-right:1px solid var(--line);padding:25px 16px;position:fixed;inset:0 auto 0 0;z-index:5}.brand{font-weight:800;font-size:22px;letter-spacing:-.6px;padding:0 12px 5px}.brand span{color:#d78bb8}.subbrand{font-size:11px;color:var(--muted);padding:0 12px 28px}.navlabel{font-size:10px;color:#9aa5b5;font-weight:700;letter-spacing:1px;padding:0 12px 10px}.nav button{width:100%;border:0;background:transparent;color:#637087;text-align:left;padding:12px;border-radius:10px;margin:2px 0;font-size:13px}.nav button.active,.nav button:hover{background:linear-gradient(100deg,#f2ebff,#fff0f7);color:#8663c4;font-weight:700}.side-note{position:absolute;bottom:22px;left:25px;right:25px;color:#9aa5b5;font-size:11px;line-height:1.6}.main{margin-left:238px;width:calc(100% - 238px);padding:30px 36px 60px;max-width:1600px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;gap:12px}.eyebrow{font-size:11px;color:var(--muted);margin-bottom:5px}.top h1{font-size:25px;margin:0;letter-spacing:-.5px}.top-actions{display:flex;gap:9px}.btn{border:1px solid var(--line);background:#fff;color:#344054;padding:10px 14px;border-radius:9px;font-size:12px;font-weight:650}.btn.primary{background:linear-gradient(110deg,#9876d8,#d58bb8);border-color:transparent;color:#fff;box-shadow:0 5px 13px #c49acb44}.btn:hover{filter:brightness(.97)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}.stat{padding:17px 18px}.stat-label{font-size:11px;color:var(--muted)}.stat-value{font-size:27px;font-weight:800;margin:8px 0 3px}.stat-foot{font-size:10px;color:#9aa5b5}.stat-icon{float:right;width:32px;height:32px;border-radius:11px;background:#f8eff8;color:#b477b2;display:grid;place-items:center;font-weight:800}.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:15px;margin-bottom:18px}.panel{padding:18px}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.panel h2{font-size:14px;margin:0}.muted{color:var(--muted);font-size:11px}.barrow{display:grid;grid-template-columns:100px 1fr 35px;gap:10px;align-items:center;margin:13px 0;font-size:11px}.bar{height:7px;border-radius:20px;background:#eef1f6;overflow:hidden}.bar i{display:block;height:100%;background:#6b9be5;border-radius:20px}.todo{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}.todo:last-child{border:0}.pill{display:inline-flex;align-items:center;padding:5px 9px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0 12px}.field{border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 11px;color:#344054;font-size:12px;outline:none}.field:focus{border-color:#c4a5e7;box-shadow:0 0 0 3px #f4edff}.search{min-width:220px;flex:1}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:760px}.table th{text-align:left;font-size:10px;color:#8792a4;font-weight:700;padding:12px 10px;border-bottom:1px solid var(--line);white-space:nowrap}.table td{padding:13px 10px;border-bottom:1px solid #f0f2f6;font-size:11px;vertical-align:middle}.table tr:last-child td{border:0}.company{font-weight:750;font-size:12px}.position{color:var(--muted);margin-top:4px}.row-actions{display:flex;gap:5px}.mini{border:1px solid var(--line);background:#fff;border-radius:7px;padding:5px 8px;font-size:10px;color:#526078}.empty{text-align:center;padding:38px;color:var(--muted);font-size:12px}.hidden{display:none!important}.page{display:none}.page.active{display:block}.modal-back{position:fixed;inset:0;background:#18243b66;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal-back.show{display:flex}.modal{background:#fff;width:min(720px,100%);max-height:92vh;overflow:auto;border-radius:16px;padding:22px;box-shadow:0 20px 60px #15213a33}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.modal h2{font-size:17px;margin:0}.close{border:0;background:#f1f3f7;border-radius:8px;width:30px;height:30px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formfield{display:flex;flex-direction:column;gap:6px}.formfield label{font-size:11px;color:#596579;font-weight:650}.formfield.full{grid-column:1/-1}.formfield input,.formfield select,.formfield textarea{width:100%}.formfield textarea{min-height:75px;resize:vertical}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.toast{position:fixed;bottom:22px;right:22px;background:#172033;color:#fff;padding:11px 16px;border-radius:9px;font-size:12px;opacity:0;transform:translateY(8px);transition:.2s;z-index:20}.toast.show{opacity:1;transform:translateY(0)}.section-title{font-size:18px;margin:0 0 5px}.section-desc{color:var(--muted);font-size:12px;margin:0 0 18px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.info-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.info-card h3{font-size:13px;margin:0 0 8px}.info-card p{font-size:11px;color:var(--muted);line-height:1.6;margin:0}.kanban{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:10px;overflow:auto}.kan-col{background:#edf1f7;border-radius:12px;padding:10px;min-height:160px}.kan-head{font-size:11px;font-weight:800;margin:3px 2px 10px}.kan-card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:8px;font-size:11px}.kan-card strong{display:block;margin-bottom:4px}.footnote{font-size:10px;color:#98a2b3;margin-top:20px;line-height:1.6}
+.match{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;padding:5px 8px;border-radius:20px;background:#eaf2ff;color:#2563eb;white-space:nowrap}.match.low{background:#fff2dc;color:#a66a12}.match.none{background:#f1f3f6;color:#8792a4}.detailbox{background:#f7f9fc;border:1px solid var(--line);padding:12px;border-radius:10px;font-size:11px;line-height:1.7;white-space:pre-wrap;margin-top:8px}.detail-label{font-size:10px;color:#8792a4;font-weight:700;margin-top:12px}
+
+@media(max-width:900px){.sidebar{width:70px;padding:20px 9px}.brand{font-size:0;padding:0 9px 25px}.brand:after{content:"JT";font-size:18px;color:var(--blue)}.subbrand,.navlabel,.nav button span,.side-note{display:none}.nav button{text-align:center;font-size:0;padding:13px}.nav button b{font-size:16px}.main{margin-left:70px;width:calc(100% - 70px);padding:24px 18px}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.sidebar{width:auto;height:68px;inset:auto 10px 10px 10px;padding:7px 8px;border:1px solid #efdfed;border-radius:18px;box-shadow:0 8px 28px #735b7a22;z-index:15}.brand,.subbrand,.navlabel,.side-note{display:none}.nav{display:flex;justify-content:space-around;gap:2px}.nav button{flex:1;margin:0;padding:8px 2px;border-radius:11px;font-size:9px;display:flex;flex-direction:column;align-items:center;gap:3px}.nav button span{display:block;font-size:9px;white-space:nowrap}.nav button b{font-size:16px}.main{margin:0;width:100%;padding:18px 12px 100px}.top{align-items:flex-start}.top h1{font-size:20px}.top-actions{flex-direction:column}.grid2{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:13px}.stat-value{font-size:23px}.cards{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.formfield.full{grid-column:auto}.toolbar .field{min-width:100%}.toolbar select{flex:1}.top{flex-direction:column}.top-actions{width:100%;flex-direction:row}.top-actions .btn{flex:1}.tablewrap{overflow:visible}.table{min-width:0}.table thead{display:none}.table tbody,.table tr,.table td{display:block;width:100%}.table tr{border:1px solid var(--line);border-radius:13px;padding:9px 11px;margin:10px 0;background:#fff;box-shadow:0 3px 12px #795c7a0b}.table td{padding:6px 2px;border:0!important;font-size:11px}.table td:empty{display:none}.table td:last-child{padding-top:9px}.row-actions{flex-wrap:wrap}.row-actions button{flex:1}.kanban{grid-template-columns:repeat(4,minmax(210px,1fr))}.modal{padding:16px}.modal-back{align-items:flex-end;padding:8px}.modal{max-height:92vh;border-radius:20px 20px 12px 12px}}
+
+/* Mobile/tablet usability improvements */
+html{ -webkit-text-size-adjust:100%; }
+body{ min-width:320px; }
+img,iframe{max-width:100%;}
+.field,button{min-height:40px;}
+@media (max-width: 900px){
+  .main{min-width:0;}
+  .panel,.stat{min-width:0;}
+  .tablewrap{-webkit-overflow-scrolling:touch;}
+  .kanban{-webkit-overflow-scrolling:touch;}
+}
+@media (max-width: 620px){
+  .main{padding-left:12px;padding-right:12px;}
+  .top{gap:12px;}
+  .top-actions{display:grid;grid-template-columns:1fr 1fr;}
+  .top-actions .btn{min-width:0;padding:10px 8px;font-size:11px;}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .stat{overflow-wrap:anywhere;}
+  .barrow{grid-template-columns:minmax(75px, 1fr) minmax(55px, 2fr) 24px;gap:7px;font-size:10px;}
+  .panel{padding:13px;border-radius:14px;}
+  .panel-head{gap:8px;align-items:flex-start;}
+  .panel-head .muted{text-align:right;}
+  .toolbar{display:grid;grid-template-columns:1fr;}
+  .toolbar .field,.toolbar select{width:100%;min-width:0;}
+  .table tr{overflow-wrap:anywhere;}
+  .table td{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;}
+  .table td .field{max-width:100%!important;width:100%;}
+  .row-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .row-actions button{min-width:0;white-space:normal;}
+  .kanban{grid-template-columns:repeat(4,minmax( min(78vw, 240px),1fr));}
+  .kan-col{min-width:0;}
+  .modal-back{align-items:flex-end;padding:0;}
+  .modal{width:100%;max-height:94dvh;overflow-y:auto;padding:16px 14px calc(18px + env(safe-area-inset-bottom));border-radius:20px 20px 0 0;}
+  .formgrid{grid-template-columns:minmax(0,1fr);}
+  .formfield.full{grid-column:auto;}
+  .formfield input,.formfield select,.formfield textarea{font-size:16px;}
+  .modal-actions{position:sticky;bottom:-18px;background:#fff;padding:12px 0 max(4px,env(safe-area-inset-bottom));}
+  .modal-actions .btn{flex:1;}
+  .sidebar{bottom:max(10px,env(safe-area-inset-bottom));}
+  .toast{left:12px;right:12px;bottom:90px;text-align:center;}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">Job<span>Track</span></div><div class="subbrand">PERSONAL CAREER WORKSPACE</div>
+  <div class="navlabel">WORKSPACE</div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard"><b>▦</b> <span>Dashboard</span></button>
+    <button data-page="applications"><b>▤</b> <span>My Applications</span></button>
+    <button data-page="pipeline"><b>◫</b> <span>Pipeline</span></button>
+    <button data-page="calendar"><b>▦</b> <span>Follow-ups</span></button>
+    <button data-page="insights"><b>◒</b> <span>Career Insights</span></button>
+  </nav>
+  <div class="side-note">Your next opportunity starts with one application.<br><br>ข้อมูลจะถูกบันทึกไว้ในเบราว์เซอร์เครื่องนี้</div>
+</aside>
+<main class="main">
+  <header class="top"><div><div class="eyebrow">PERSONAL JOB APPLICATION TRACKER</div><h1 id="pageTitle">ภาพรวมการสมัครงาน</h1></div><div class="top-actions"><button class="btn" onclick="exportCSV()">↓ Export CSV</button><button class="btn primary" onclick="openModal()">＋ เพิ่มใบสมัคร</button></div></header>
+
+  <section class="page active" id="dashboard">
+    <div class="stats">
+      <div class="stat"><span class="stat-icon">▤</span><div class="stat-label">สมัครงานทั้งหมด</div><div class="stat-value" id="sTotal">0</div><div class="stat-foot">Total applications</div></div>
+      <div class="stat"><span class="stat-icon">◷</span><div class="stat-label">กำลังดำเนินการ</div><div class="stat-value" id="sActive">0</div><div class="stat-foot">In progress</div></div>
+      <div class="stat"><span class="stat-icon">✧</span><div class="stat-label">สัมภาษณ์</div><div class="stat-value" id="sInterview">0</div><div class="stat-foot">Interview stage</div></div>
+      <div class="stat"><span class="stat-icon">✓</span><div class="stat-label">ได้รับข้อเสนอ</div><div class="stat-value" id="sOffer">0</div><div class="stat-foot">Job offers</div></div>
+    </div>
+    <div class="grid2">
+      <div class="panel"><div class="panel-head"><h2>สถานะการสมัครงาน</h2><span class="muted">Application status</span></div><div id="statusChart"></div></div>
+      <div class="panel"><div class="panel-head"><h2>สิ่งที่ต้องติดตาม</h2><span class="muted">Follow-up tasks</span></div><div id="todoList"></div></div>
+    </div>
+    <div class="panel"><div class="panel-head"><h2>รายการล่าสุด</h2><button class="mini" onclick="showPage('applications')">ดูทั้งหมด →</button></div><div class="tablewrap"><table class="table"><thead><tr><th>บริษัท / ตำแหน่ง</th><th>วันที่สมัคร</th><th>ช่องทาง</th><th>สถานะ</th><th></th></tr></thead><tbody id="recentRows"></tbody></table></div></div>
+  </section>
+
+  <section class="page" id="applications">
+    <h2 class="section-title">My Applications</h2><p class="section-desc">จัดการและติดตามทุกใบสมัครของคุณในที่เดียว</p>
+    <div class="toolbar"><input class="field search" id="search" placeholder="ค้นหาบริษัทหรือตำแหน่ง..." oninput="renderApplications()"><select class="field" id="filterStatus" onchange="renderApplications()"><option value="">ทุกสถานะ</option></select><select class="field" id="filterChannel" onchange="renderApplications()"><option value="">ทุกช่องทาง</option></select><select class="field" id="sortBy" onchange="renderApplications()"><option value="new">วันที่สมัคร: ล่าสุด</option><option value="old">วันที่สมัคร: เก่าสุด</option><option value="company">ชื่อบริษัท A-Z</option></select></div>
+    <div class="panel"><div class="tablewrap"><table class="table"><thead><tr><th>บริษัท / ตำแหน่ง</th><th>วันที่สมัคร</th><th>ช่องทาง</th><th>เงินเดือนที่คาดหวัง</th><th>Resume Match</th><th>ติดตามผล</th><th>สถานะ</th><th>จัดการ</th></tr></thead><tbody id="appRows"></tbody></table></div><div id="emptyApps" class="empty hidden">ยังไม่มีรายการสมัครงาน<br>กด “เพิ่มใบสมัคร” เพื่อเริ่มต้นบันทึกข้อมูล</div></div>
+  </section>
+
+  <section class="page" id="pipeline">
+    <h2 class="section-title">Application Pipeline</h2><p class="section-desc">มองเห็นความคืบหน้าของใบสมัครในแต่ละขั้นตอน</p><div class="kanban" id="kanban"></div>
+  </section>
+
+  <section class="page" id="calendar">
+    <h2 class="section-title">Follow-up & Schedule</h2><p class="section-desc">รายการที่ควรติดตาม เรียงตามวันที่กำหนด</p><div class="panel" id="followups"></div>
+  </section>
+
+  <section class="page" id="insights">
+    <h2 class="section-title">Career Insights</h2><p class="section-desc">สถิติช่วยให้เห็นภาพรวมและวางแผนการสมัครงานได้ดีขึ้น</p><div class="stats">
+      <div class="stat"><div class="stat-label">อัตราเข้าสัมภาษณ์</div><div class="stat-value" id="iInterview">0%</div><div class="stat-foot">Interview conversion</div></div>
+      <div class="stat"><div class="stat-label">อัตราได้รับข้อเสนอ</div><div class="stat-value" id="iOffer">0%</div><div class="stat-foot">Offer conversion</div></div>
+      <div class="stat"><div class="stat-label">ช่องทางที่ใช้มากที่สุด</div><div class="stat-value" style="font-size:19px" id="iChannel">—</div><div class="stat-foot">Top application source</div></div>
+      <div class="stat"><div class="stat-label">เงินเดือนคาดหวังเฉลี่ย</div><div class="stat-value" style="font-size:20px" id="iSalary">—</div><div class="stat-foot">Expected salary average</div></div>
+    </div>
+    <div class="panel" style="margin-bottom:14px">
+      <div class="panel-head"><h2>Resume Match Profile</h2><span class="muted">โปรไฟล์สำหรับเทียบกับ JD</span></div>
+      <p class="muted" style="line-height:1.7;margin-top:0">เพิ่มข้อความสำหรับเทียบ JD พร้อมแนบเรซูเมไฟล์ PDF, PNG, JPG หรือใส่ลิงก์ Google Drive / เว็บไซต์ฝากไฟล์ได้</p>
+      <textarea class="field" id="resumeProfile" style="width:100%;min-height:130px" placeholder="วางข้อความ Resume เช่น ประสบการณ์ทำงาน ทักษะ โปรแกรมที่ใช้ ภาษา การศึกษา และผลงาน..."></textarea>
+      <div class="toolbar" style="margin-bottom:8px"><input class="field" type="file" id="resumeFile" accept=".txt,.pdf,.png,.jpg,.jpeg,text/plain,application/pdf,image/png,image/jpeg"><input class="field" id="resumeLink" type="url" placeholder="ลิงก์ Resume เช่น https://drive.google.com/..."><button class="btn" onclick="openProfileResume()">เปิดไฟล์ที่บันทึก</button><button class="btn primary" onclick="saveResumeProfile()">บันทึก Resume Profile</button></div><div class="muted" id="resumeSaved">รองรับ PDF / PNG / JPG และลิงก์ (ไฟล์ไม่เกิน 4 MB)</div>
+    </div>
+    <div class="panel" style="margin-bottom:14px"><h2>Resume Match by Application</h2><div id="matchList" style="margin-top:12px"></div></div>
+    <div class="panel"><h2>จำนวนใบสมัครตามช่องทาง</h2><div id="channelChart" style="margin-top:15px"></div></div>
+    <p class="footnote">หมายเหตุ: คะแนน Match เป็นการเทียบคำสำคัญเบื้องต้นจากข้อความ Resume และ JD ไม่ใช่การตัดสินใจแบบ ATS หรือการรับประกันผลการสมัคร ควรตรวจสอบความหมายและบริบทด้วยตนเอง</p>
+  </section>
+  <p class="footnote">JobTrack • Personal use prototype • ข้อมูลเก็บในเบราว์เซอร์ปัจจุบันเท่านั้น โปรด Export CSV เพื่อสำรองข้อมูลเป็นระยะ</p>
+</main>
+</div>
+
+<div class="modal-back" id="modal">
+ <div class="modal">
+  <div class="modal-head"><h2 id="modalTitle">เพิ่มใบสมัครงาน</h2><button class="close" onclick="closeModal()">✕</button></div>
+  <form id="appForm">
+   <input type="hidden" id="editId">
+   <div class="formgrid">
+    <div class="formfield"><label>วันที่สมัคร *</label><input class="field" type="date" id="dateApplied" required></div>
+    <div class="formfield"><label>ชื่อบริษัท *</label><input class="field" id="company" placeholder="เช่น ABC Manufacturing" required></div>
+    <div class="formfield"><label>ตำแหน่งงาน *</label><input class="field" id="position" placeholder="เช่น MRO Purchasing Officer" required></div>
+    <div class="formfield"><label>ประเภทงาน</label><select class="field" id="jobType"><option value="">เลือกประเภท</option><option>Purchasing / Procurement</option><option>MRO Purchasing</option><option>Merchandiser</option><option>Supply Chain / Logistics</option><option>Sales / Coordinator</option><option>Other</option></select></div>
+    <div class="formfield"><label>ช่องทางการสมัคร</label><select class="field" id="channel"><option>JobsDB</option><option>JOBTOPGUN</option><option>JobBKK</option><option>LinkedIn</option><option>Email</option><option>เว็บไซต์บริษัท</option><option>คนรู้จักแนะนำ</option><option>อื่น ๆ</option></select></div>
+    <div class="formfield"><label>สถานะการสมัคร</label><select class="field" id="status"></select></div>
+    <div class="formfield"><label>เงินเดือนที่คาดหวัง (บาท/เดือน)</label><input class="field" type="number" min="0" id="salary" placeholder="เช่น 25000"></div>
+    <div class="formfield"><label>เงินเดือนที่บริษัทเสนอ (บาท/เดือน)</label><input class="field" type="number" min="0" id="offeredSalary" placeholder="กรอกเมื่อได้รับข้อเสนอ"></div>
+    <div class="formfield"><label>สถานที่ทำงาน</label><input class="field" id="location" placeholder="เช่น ชลบุรี"></div>
+    <div class="formfield"><label>เว็บไซต์บริษัท</label><input class="field" type="url" id="companyUrl" placeholder="https://..."></div>
+    <div class="formfield full"><label>ข้อมูลบริษัท</label><textarea class="field" id="companyInfo" placeholder="ประเภทธุรกิจ ผลิตภัณฑ์ ขนาดองค์กร วัฒนธรรมองค์กร หรือข้อมูลที่ค้นพบ..."></textarea></div>
+    <div class="formfield full"><label>สวัสดิการ</label><textarea class="field" id="benefits" placeholder="เช่น โบนัส ประกันสุขภาพ ค่าเดินทาง ค่าอาหาร วันลาพักร้อน..."></textarea></div>
+    <div class="formfield full"><label>รายละเอียดงาน (Job Description / JD)</label><textarea class="field" id="jdText" style="min-height:145px" placeholder="วางรายละเอียดหน้าที่ ความรับผิดชอบ คุณสมบัติ และทักษะที่บริษัทต้องการ..."></textarea></div>
+    <div class="formfield"><label>วันที่ติดตามผล</label><input class="field" type="date" id="followup"></div>
+    <div class="formfield"><label>ลิงก์ประกาศงาน</label><input class="field" type="url" id="jobUrl" placeholder="https://..."></div>
+    <div class="formfield"><label>ชื่อผู้ติดต่อ / HR</label><input class="field" id="contact" placeholder="ชื่อ HR (ถ้ามี)"></div>
+    <div class="formfield"><label>อีเมล / เบอร์โทร</label><input class="field" id="contactInfo" placeholder="ข้อมูลติดต่อ (ถ้ามี)"></div>
+    <div class="formfield full"><label>แนบเรซูเมสำหรับตำแหน่งนี้ (PDF / PNG / JPG)</label><input class="field" type="file" id="applicationResume" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg"><div class="muted" id="applicationResumeInfo">ไฟล์เดิมจะคงอยู่หากไม่ได้เลือกไฟล์ใหม่</div></div>
+     <div class="formfield full"><label>ลิงก์เรซูเม</label><input class="field" type="url" id="applicationResumeLink" placeholder="https://drive.google.com/... หรือเว็บไซต์ Portfolio"></div>
+     <div class="formfield full"><label>หมายเหตุ</label><textarea class="field" id="notes" placeholder="รายละเอียดงาน สิ่งที่ HR แจ้ง หรือสิ่งที่ต้องเตรียม..."></textarea></div>
+   </div>
+   <div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">ยกเลิก</button><button type="submit" class="btn primary">บันทึกข้อมูล</button></div>
+  </form>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const STATUSES=["เตรียมสมัคร","สมัครแล้ว","กำลังพิจารณา","นัดสัมภาษณ์","ผ่านสัมภาษณ์","รอผลสัมภาษณ์","ได้รับข้อเสนอ","ตอบรับข้อเสนอ","ไม่ผ่านการคัดเลือก","ถอนใบสมัคร","ไม่มีการตอบกลับ"];
+const COLORS={"เตรียมสมัคร":["#64748b","#f1f5f9"],"สมัครแล้ว":["#2563eb","#eaf2ff"],"กำลังพิจารณา":["#b7791f","#fff4db"],"นัดสัมภาษณ์":["#7c3aed","#f1eafe"],"ผ่านสัมภาษณ์":["#0891b2","#e0f5fa"],"รอผลสัมภาษณ์":["#c17b16","#fff2dc"],"ได้รับข้อเสนอ":["#16834a","#e5f5ec"],"ตอบรับข้อเสนอ":["#087443","#d7f2e2"],"ไม่ผ่านการคัดเลือก":["#dc4444","#fdecec"],"ถอนใบสมัคร":["#787878","#eee"],"ไม่มีการตอบกลับ":["#8b5cf6","#f2edff"]};
+const ACTIVE=["เตรียมสมัคร","สมัครแล้ว","กำลังพิจารณา","นัดสัมภาษณ์","ผ่านสัมภาษณ์","รอผลสัมภาษณ์"];
+const INTERVIEW=["นัดสัมภาษณ์","ผ่านสัมภาษณ์","รอผลสัมภาษณ์"];
+const CHANNELS=["JobsDB","JOBTOPGUN","JobBKK","LinkedIn","Email","เว็บไซต์บริษัท","คนรู้จักแนะนำ","อื่น ๆ"];
+let apps=load();
+function load(){try{return JSON.parse(localStorage.getItem("jobtrack_apps")||"[]")}catch(e){return []}}
+function save(){localStorage.setItem("jobtrack_apps",JSON.stringify(apps));renderAll()}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function fmt(d){if(!d)return "—";let p=d.split("-");return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:d}
+function money(v){return v?Number(v).toLocaleString("th-TH")+" ฿":"—"}
+function badge(s){let c=COLORS[s]||COLORS["สมัครแล้ว"];return `<span class="pill" style="color:${c[0]};background:${c[1]}">${esc(s)}</span>`}
+function toast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2200)}
+function openModal(id){document.getElementById("appForm").reset();document.getElementById("applicationResumeInfo").textContent="ไฟล์เดิมจะคงอยู่หากไม่ได้เลือกไฟล์ใหม่";document.getElementById("editId").value="";document.getElementById("modalTitle").textContent="เพิ่มใบสมัครงาน";document.getElementById("dateApplied").value=new Date().toISOString().slice(0,10);document.getElementById("status").value="สมัครแล้ว";if(id){let a=apps.find(x=>x.id===id);if(!a)return;document.getElementById("modalTitle").textContent="แก้ไขใบสมัคร";Object.keys(a).forEach(k=>{let el=document.getElementById(k);if(el&&el.type!=="file")el.value=a[k]??""});document.getElementById("applicationResumeInfo").textContent=a.resumeFileName?"ไฟล์แนบปัจจุบัน: "+a.resumeFileName:"ยังไม่มีไฟล์แนบ";document.getElementById("applicationResumeLink").value=a.resumeLink||""}document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function showPage(p){document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id===p));document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===p));let names={dashboard:"ภาพรวมการสมัครงาน",applications:"รายการสมัครงาน",pipeline:"ความคืบหน้าการสมัคร",calendar:"ติดตามผลและกำหนดการ",insights:"สถิติการสมัครงาน"};document.getElementById("pageTitle").textContent=names[p];renderAll()}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.getElementById("status").innerHTML=STATUSES.map(s=>`<option>${s}</option>`).join("");
+document.getElementById("filterStatus").innerHTML+="";
+document.getElementById("filterStatus").innerHTML='<option value="">ทุกสถานะ</option>'+STATUSES.map(s=>`<option>${s}</option>`).join("");
+document.getElementById("filterChannel").innerHTML+='<option value="">ทุกช่องทาง</option>';
+document.getElementById("filterChannel").innerHTML= '<option value="">ทุกช่องทาง</option>'+CHANNELS.map(s=>`<option>${s}</option>`).join("");
+document.getElementById("appForm").addEventListener("submit",async e=>{e.preventDefault();let id=document.getElementById("editId").value;let a={};["dateApplied","company","position","jobType","channel","status","salary","offeredSalary","location","companyUrl","companyInfo","benefits","jdText","followup","jobUrl","contact","contactInfo","notes"].forEach(k=>a[k]=document.getElementById(k).value.trim());a.id=id||String(Date.now());a.updatedAt=new Date().toISOString();a.resumeLink=document.getElementById("applicationResumeLink").value.trim();let oldRecord=id?apps.find(x=>x.id===id):null;a.resumeData=oldRecord?.resumeData||"";a.resumeFileName=oldRecord?.resumeFileName||"";let resumeUpload=document.getElementById("applicationResume").files[0];if(resumeUpload){if(resumeUpload.size>4*1024*1024){toast("ไฟล์เรซูเมต้องมีขนาดไม่เกิน 4 MB");return}a.resumeData=await fileToDataURL(resumeUpload);a.resumeFileName=resumeUpload.name}if(id){let old=apps.find(x=>x.id===id);a.history=old?.history||[];if(old&&old.status!==a.status)a.history.push({status:a.status,date:new Date().toISOString().slice(0,10)});apps=apps.map(x=>x.id===id?a:x)}else{a.history=[{status:a.status,date:a.dateApplied}];apps.unshift(a)}save();closeModal();toast(id?"อัปเดตข้อมูลแล้ว":"เพิ่มใบสมัครเรียบร้อยแล้ว")});
+function editApp(id){openModal(id)}
+function deleteApp(id){let a=apps.find(x=>x.id===id);if(a&&confirm(`ต้องการลบใบสมัคร ${a.company} ใช่หรือไม่?`)){apps=apps.filter(x=>x.id!==id);save();toast("ลบรายการแล้ว")}}
+function changeStatus(id,s){let a=apps.find(x=>x.id===id);if(!a)return;if(a.status!==s){a.status=s;a.history=a.history||[];a.history.push({status:s,date:new Date().toISOString().slice(0,10)});a.updatedAt=new Date().toISOString();save();toast("อัปเดตสถานะแล้ว")}}
+function row(a,compact=false){let m=matchScore(a);return `<tr><td><div class="company">${esc(a.company)}</div><div class="position">${esc(a.position)}</div></td><td>${fmt(a.dateApplied)}</td><td>${esc(a.channel||"—")}</td>${compact?"":`<td>${money(a.salary)}</td><td>${m===null?'<span class="match none">ยังไม่มีข้อมูล</span>':`<span class="match ${m<50?'low':''}">${m}% Match</span>`}</td><td>${fmt(a.followup)}</td>`}<td><select class="field" style="padding:6px 7px;font-size:10px;max-width:155px" onchange="changeStatus('${a.id}',this.value)">${STATUSES.map(s=>`<option ${a.status===s?"selected":""}>${s}</option>`).join("")}</select></td><td><div class="row-actions"><button class="mini" onclick="editApp('${a.id}')">รายละเอียด / แก้ไข</button>${a.resumeData?`<button class="mini" onclick="openResume('${a.id}')">เปิด Resume</button>`:""}${a.resumeLink?`<button class="mini" onclick="openResumeLink('${a.id}')">ลิงก์ Resume</button>`:""}<button class="mini" onclick="deleteApp('${a.id}')">ลบ</button></div></td></tr>`}
+function renderApplications(){let q=(document.getElementById("search")?.value||"").toLowerCase(),st=document.getElementById("filterStatus")?.value||"",ch=document.getElementById("filterChannel")?.value||"",sort=document.getElementById("sortBy")?.value||"new";let list=apps.filter(a=>(!q||(a.company+" "+a.position).toLowerCase().includes(q))&&(!st||a.status===st)&&(!ch||a.channel===ch));list.sort((a,b)=>sort==="old"?a.dateApplied.localeCompare(b.dateApplied):sort==="company"?a.company.localeCompare(b.company):b.dateApplied.localeCompare(a.dateApplied));document.getElementById("appRows").innerHTML=list.map(a=>row(a)).join("");document.getElementById("emptyApps").classList.toggle("hidden",list.length>0)}
+function renderDashboard(){let total=apps.length,active=apps.filter(a=>ACTIVE.includes(a.status)).length,inter=apps.filter(a=>INTERVIEW.includes(a.status)||["ได้รับข้อเสนอ","ตอบรับข้อเสนอ"].includes(a.status)).length,offers=apps.filter(a=>["ได้รับข้อเสนอ","ตอบรับข้อเสนอ"].includes(a.status)).length;document.getElementById("sTotal").textContent=total;document.getElementById("sActive").textContent=active;document.getElementById("sInterview").textContent=inter;document.getElementById("sOffer").textContent=offers;
+let counts=STATUSES.map(s=>[s,apps.filter(a=>a.status===s).length]).filter(x=>x[1]);document.getElementById("statusChart").innerHTML=counts.length?counts.map(([s,n])=>`<div class="barrow"><span>${esc(s)}</span><div class="bar"><i style="width:${total?n/total*100:0}%;background:${COLORS[s][0]}"></i></div><b>${n}</b></div>`).join(""):'<div class="empty">ยังไม่มีข้อมูลสถานะ</div>';
+let today=new Date().toISOString().slice(0,10),due=apps.filter(a=>a.followup&&a.followup<=today&&!["ได้รับข้อเสนอ","ตอบรับข้อเสนอ","ไม่ผ่านการคัดเลือก","ถอนใบสมัคร"].includes(a.status)).sort((a,b)=>a.followup.localeCompare(b.followup));document.getElementById("todoList").innerHTML=due.length?due.slice(0,5).map(a=>`<div class="todo"><span><b>${esc(a.company)}</b><br><span class="muted">${esc(a.position)}</span></span><span style="color:${a.followup<today?"#dc4444":"#b7791f"};font-size:10px">${a.followup<today?"เลยกำหนด": "วันนี้"} · ${fmt(a.followup)}</span></div>`).join(""):'<div class="empty">ยังไม่มีรายการที่ถึงกำหนดติดตาม 🎉</div>';
+document.getElementById("recentRows").innerHTML=apps.slice().sort((a,b)=>b.dateApplied.localeCompare(a.dateApplied)).slice(0,5).map(a=>`<tr><td><div class="company">${esc(a.company)}</div><div class="position">${esc(a.position)}</div></td><td>${fmt(a.dateApplied)}</td><td>${esc(a.channel||"—")}</td><td>${badge(a.status)}</td><td><button class="mini" onclick="editApp('${a.id}')">เปิด</button></td></tr>`).join("")||'<tr><td colspan="5" class="empty">ยังไม่มีใบสมัครงาน</td></tr>'}
+function renderPipeline(){let stages=["สมัครแล้ว","กำลังพิจารณา","นัดสัมภาษณ์","ได้รับข้อเสนอ"];document.getElementById("kanban").innerHTML=stages.map(s=>`<div class="kan-col"><div class="kan-head">${badge(s)} <span style="float:right">${apps.filter(a=>a.status===s).length}</span></div>${apps.filter(a=>a.status===s).map(a=>`<div class="kan-card"><strong>${esc(a.company)}</strong>${esc(a.position)}<div class="muted" style="margin-top:7px">${fmt(a.dateApplied)}</div><button class="mini" style="margin-top:8px" onclick="editApp('${a.id}')">ดูรายละเอียด</button></div>`).join("")||'<div class="muted" style="padding:10px 3px">ไม่มีรายการ</div>'}</div>`).join("")}
+function renderFollowups(){let list=apps.filter(a=>a.followup).sort((a,b)=>a.followup.localeCompare(b.followup));document.getElementById("followups").innerHTML=list.length?list.map(a=>`<div class="todo"><span><b>${esc(a.company)}</b><br><span class="muted">${esc(a.position)} · ${badge(a.status)}</span></span><span><b>${fmt(a.followup)}</b><br><span class="muted">${a.followup<new Date().toISOString().slice(0,10)?"เลยกำหนด":a.followup===new Date().toISOString().slice(0,10)?"วันนี้":"กำหนดติดตาม"}</span></span><button class="mini" onclick="editApp('${a.id}')">แก้ไข</button></div>`).join(""):'<div class="empty">ยังไม่มีวันติดตามผลที่บันทึกไว้</div>'}
+function renderInsights(){let n=apps.length,inter=apps.filter(a=>INTERVIEW.includes(a.status)||["ได้รับข้อเสนอ","ตอบรับข้อเสนอ"].includes(a.status)).length,offer=apps.filter(a=>["ได้รับข้อเสนอ","ตอบรับข้อเสนอ"].includes(a.status)).length;document.getElementById("iInterview").textContent=n?Math.round(inter/n*100)+"%":"0%";document.getElementById("iOffer").textContent=n?Math.round(offer/n*100)+"%":"0%";let ch={};apps.forEach(a=>{if(a.channel)ch[a.channel]=(ch[a.channel]||0)+1});let top=Object.entries(ch).sort((a,b)=>b[1]-a[1])[0];document.getElementById("iChannel").textContent=top?top[0]:"—";let sal=apps.map(a=>Number(a.salary)).filter(Boolean);document.getElementById("iSalary").textContent=sal.length?Math.round(sal.reduce((x,y)=>x+y,0)/sal.length).toLocaleString("th-TH")+" ฿":"—";let max=Math.max(1,...Object.values(ch));document.getElementById("channelChart").innerHTML=Object.entries(ch).length?Object.entries(ch).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`<div class="barrow"><span>${esc(s)}</span><div class="bar"><i style="width:${n/max*100}%"></i></div><b>${n}</b></div>`).join(""):'<div class="empty">เพิ่มใบสมัครเพื่อดูสถิติช่องทาง</div>';renderMatches()}
+
+function getResume(){return localStorage.getItem("jobtrack_resume_profile")||""}
+function fileToDataURL(file){return new Promise((resolve,reject)=>{let reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file)})}
+function saveResumeProfile(){let v=document.getElementById("resumeProfile").value.trim(),link=document.getElementById("resumeLink").value.trim(),file=document.getElementById("resumeFile").files[0];if(file&&file.size>4*1024*1024){toast("ไฟล์เรซูเมต้องมีขนาดไม่เกิน 4 MB");return}let store=async()=>{localStorage.setItem("jobtrack_resume_profile",v);localStorage.setItem("jobtrack_resume_link",link);if(file){localStorage.setItem("jobtrack_resume_file",await fileToDataURL(file));localStorage.setItem("jobtrack_resume_filename",file.name)}document.getElementById("resumeSaved").textContent=file?"บันทึกแล้ว: "+file.name:(link?"บันทึกแล้ว พร้อมลิงก์เรซูเม":"บันทึกแล้ว");renderAll();toast("บันทึก Resume Profile แล้ว")};store().catch(()=>toast("บันทึกไม่สำเร็จ พื้นที่จัดเก็บอาจไม่เพียงพอ กรุณาใช้ไฟล์ขนาดเล็กลง"))}
+function openProfileResume(){let data=localStorage.getItem("jobtrack_resume_file"),name=localStorage.getItem("jobtrack_resume_filename")||"Resume";if(!data){toast("ยังไม่มีไฟล์ Resume ที่บันทึกไว้");return}let w=window.open();if(w){w.document.write(`<title>${esc(name)}</title><iframe src="${data}" style="border:0;width:100%;height:100vh"></iframe>`);w.document.close()}}
+function openResume(id){let a=apps.find(x=>x.id===id);if(a?.resumeData){let w=window.open();if(w){w.document.write(`<title>${esc(a.resumeFileName)}</title><iframe src="${a.resumeData}" style="border:0;width:100%;height:100vh"></iframe>`);w.document.close()}}}
+function openResumeLink(id){let a=apps.find(x=>x.id===id);if(a?.resumeLink)window.open(a.resumeLink,"_blank","noopener") }
+function normalizeWords(t){return (t||"").toLowerCase().replace(/[^a-z0-9ก-๙+#./ -]/gi," ").split(/\s+/).filter(w=>w.length>2)}
+function matchScore(a){let resume=getResume(),jd=a.jdText||"";if(!resume||!jd.trim())return null;let stop=new Set(["and","the","for","with","you","your","will","have","from","that","this","งาน","และ","หรือ","เป็น","ได้","มี","ของ","เพื่อ","ต้อง","สามารถ","รวม","ตาม","ด้าน","เกี่ยวกับ","บริษัท","ตำแหน่ง","หน้าที่","ความ","รับผิดชอบ","ผู้สมัคร"]);let r=new Set(normalizeWords(resume).filter(w=>!stop.has(w))),j=[...new Set(normalizeWords(jd).filter(w=>!stop.has(w)))];if(!j.length)return null;let hits=j.filter(w=>r.has(w));return Math.round(hits.length/j.length*100)}
+function renderMatches(){let el=document.getElementById("matchList");if(!el)return;let list=apps.filter(a=>a.jdText);if(!list.length){el.innerHTML='<div class="empty">เพิ่ม JD ในรายละเอียดใบสมัคร แล้วระบบจะแสดงคะแนนความสอดคล้องที่นี่</div>';return}el.innerHTML=list.map(a=>{let m=matchScore(a);return `<div class="todo"><span><b>${esc(a.company)} · ${esc(a.position)}</b><br><span class="muted">${m===null?"กรุณาบันทึก Resume Profile เพื่อเริ่มเปรียบเทียบ":`คะแนนความสอดคล้องเบื้องต้นจากคำสำคัญ`}</span></span>${m===null?'<span class="match none">รอข้อมูล Resume</span>':`<span class="match ${m<50?'low':''}">${m}% Match</span>`}<button class="mini" onclick="editApp('${a.id}')">ดู JD</button></div>`}).join("")}
+document.getElementById("resumeFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;if(f.size>4*1024*1024){toast("ไฟล์เรซูเมต้องมีขนาดไม่เกิน 4 MB");e.target.value="";return}if(f.name.toLowerCase().endsWith(".txt")){document.getElementById("resumeProfile").value=await f.text();toast("นำเข้าข้อความ Resume แล้ว")}else{toast("เลือกไฟล์แนบแล้ว กดบันทึก Resume Profile เพื่อเก็บไฟล์")}});
+
+function renderAll(){renderDashboard();renderApplications();renderPipeline();renderFollowups();renderInsights()}
+function exportCSV(){if(!apps.length){toast("ยังไม่มีข้อมูลสำหรับ Export");return}let keys=["dateApplied","company","position","jobType","channel","status","salary","offeredSalary","location","companyUrl","companyInfo","benefits","jdText","followup","jobUrl","contact","contactInfo","notes"];let labels=["วันที่สมัคร","บริษัท","ตำแหน่ง","ประเภทงาน","ช่องทาง","สถานะ","เงินเดือนคาดหวัง","สถานที่","วันที่ติดตาม","ลิงก์งาน","ผู้ติดต่อ","ข้อมูลติดต่อ","หมายเหตุ"];let csv=[labels,...apps.map(a=>keys.map(k=>a[k]||""))].map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\r\n");let blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="jobtrack-applications.csv";a.click();URL.revokeObjectURL(url);toast("Export CSV เรียบร้อย")}
+document.getElementById("resumeProfile").value=getResume();document.getElementById("resumeLink").value=localStorage.getItem("jobtrack_resume_link")||"";let savedResumeName=localStorage.getItem("jobtrack_resume_filename");if(savedResumeName)document.getElementById("resumeSaved").textContent="ไฟล์ที่บันทึกไว้: "+savedResumeName;
+renderAll();
+</script>
+</body>
+</html>
